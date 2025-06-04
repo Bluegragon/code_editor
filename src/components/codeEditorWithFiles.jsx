@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CodeEditor from "./CodeEditor";
+import CodeEditor from "./codeEditor";
 import Terminal from "./Terminal";
 // import AIAgent from "./AIAgent"; // Placeholder for your AI agent
 // import Preview from "./Preview"; // Placeholder for preview view
