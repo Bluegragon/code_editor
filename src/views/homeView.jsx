@@ -23,13 +23,21 @@ export function HomeView() {
 
 
 const content=<>
+<div className="flex flex-col w-full h-screen">
+
+<Navbar/>
+<div className="flex flex-row w-full">
 <FileExplorer structure={fileStructure} />
+
 <CodeEditorWithScreen/>
+
+</div>
+</div>
 </>
 
   return (
     <>
-    <Navbar/>
+    
     <Sidebar content={content} />
    
     </>

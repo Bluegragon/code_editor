@@ -60,7 +60,7 @@ export default function CodeEditorWithScreen() {
   };
 
   return (
-    <div className="h-screen w-full flex flex-col dark:bg-gray-900 text-white">
+    <div className=" w-full flex flex-col bg-gray-400/10 dark:bg-gray-900 text-white relative">
       {/* View Selector */}
       <div className="flex space-x-2 px-2 py-1.5  border-b border-gray-700">
         {viewModes.map((mode) => (
@@ -81,22 +81,22 @@ export default function CodeEditorWithScreen() {
 
       {/* File Tabs (only show in Editor view) */}
       {activeView === "Editor" && (
-        <div className="flex space-x-2 px-2 p-1 mb-2 border-b border-gray-700 overflow-x-auto">
+        <div className="flex px-2  border-gray-700 overflow-x-auto">
           {files.map((file, index) => (
             <div key={index} className="flex items-center">
               <button
                 onClick={() => setActiveTab(index)}
-                className={`px-3 py-1 flex items-center text-xs rounded-t ${
+                className={`px-3 py-2 flex items-center text-xs ${
                   index === activeTab
                     ? "bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-white font-semibold"
-                    : "bg-gray-300 dark:bg-gray-700 text-gray-500 dark:text-gray-300"
+                    : " text-gray-500 dark:text-gray-300"
                 }`}
               >
                 <File size={12} className="mr-1" />
                 {file.name}
                 <X
                   size={15}
-                  className="ml-1 cursor-pointer"
+                  className="ml-1 cursor-pointer "
                   onClick={(e) => {
                     e.stopPropagation();
                     getUpdatedFiles(index);
@@ -109,14 +109,14 @@ export default function CodeEditorWithScreen() {
       )}
 
       {/* Main Area */}
-      <div className="flex-1 overflow-hidden flex flex-row justify-center relative">
+      <div className="overflow-hidden flex flex-row justify-center relative">
         {activeView === "Editor" && files.length > 0 && files[activeTab] ? (
           <>
           <CodeEditor
             file={files[activeTab]}
             onChange={updateFileContent}
           />
-          <Terminal/>
+           <Terminal />
           </>
         ) : activeView === "Test" ? (
           <Terminal />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {
   ChevronDown,
   ChevronRight,
-  FileText,
+  File,
   Folder,
   FolderOpen,
   RefreshCcw,
@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import '../App.css'; // Ensure you have Tailwind CSS set up in your project
 import { linearbackground } from "../customStyles";
+import { useUIState } from "../providers/EditorProvider";
 
 const FileExplorer = ({ structure = [] }) => {
   const [data, setData] = useState(structure);
@@ -19,7 +20,7 @@ const FileExplorer = ({ structure = [] }) => {
   const [collapsed, setCollapsed] = useState(false);
   const [showExplorer, setShowExplorer] = useState(true);
 
-
+const {fileExplorerOpen} = useUIState(); // Assuming this is controlled by a parent component or state
  useEffect(() => {
     const handleKeydown = (e) => {
       // Check for Ctrl + R
@@ -55,10 +56,10 @@ const FileExplorer = ({ structure = [] }) => {
   };
 
   return (
-    <div className={`dark:bg-gray-900 dark:text-white h-screen flex flex-col ${showExplorer ? "w-64": "w-0"} duration-300`}>
+    <div className={` bg-gray-400/10 dark:bg-gray-900 dark:text-white h-screen flex flex-col  ${fileExplorerOpen ? "w-56": "w-0 hidden"} duration-300`}>
       {/* Toolbar */}
-      <div className="flex items-center justify-between px-3 py-1 border-b border-gray-700 text-sm">
-        <span className="font-semibold dark:text-gray-100 text-gray-100 px-2 py-1.5 flex items-center text-sm rounded-sm shadow-2xl" style={linearbackground}>Explorer</span>
+      <div className="flex items-center justify-between px-2 py-1 border-b border-gray-700 text-sm">
+        <span className="font-semibold dark:text-gray-100 text-gray-800 px-2 py-1.5 flex items-center text-sm rounded-sm shadow-2xl">Explorer</span>
         <div className="flex items-center gap-2">
           <button onClick={handleRefresh} title="Refresh">
             <RefreshCcw size={16} />
@@ -109,7 +110,7 @@ const ExplorerItem = ({ item, depth, collapseTrigger }) => {
   return (
     <div>
       <div
-        className="flex items-center gap-2 cursor-pointer py-1 hover:bg-secondrycolor dark:hover:bg-gray-800 rounded"
+        className="flex items-center gap-1 cursor-pointer py-1 hover:bg-secondrycolor dark:hover:bg-gray-800 rounded hover:shadow-md transition-all duration-200"
         style={{ paddingLeft: `${depth * 16 + 12}px` }}
         onClick={toggleExpand}
       >
@@ -121,9 +122,9 @@ const ExplorerItem = ({ item, depth, collapseTrigger }) => {
         {isFolder ? (
           expanded ? <FolderOpen size={16} /> : <Folder size={16} />
         ) : (
-          <FileText size={16} />
+          <File size={16} />
         )}
-        <span>{item.name}</span>
+        <span className="text-xs">{item.name}</span>
       </div>
 
       {hasChildren && expanded && (

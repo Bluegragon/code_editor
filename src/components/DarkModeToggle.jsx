@@ -49,25 +49,28 @@ function DarkModeToggle() {
   const toggle = () => setIsOn(!isOn);
 
   return (
-    <div className="flex items-center space-x-4">
-      <Sun size={18}/>
-
-      <div 
-        onClick={toggleTheme}
-        className={`w-10 h-6 flex items-center bg-gray-300 rounded-full p-1 cursor-pointer transition-colors duration-300 ${
-          isDarkMode ? 'bg-accentcolor' : 'bg-gray-400'
-        }`}
-      >
-        <div
-          className={`bg-white w-4 h-4 rounded-full shadow-md transform duration-300 ${
-            isDarkMode ? 'translate-x-4' : ''
-          }`}
-        />
-      </div>
-      {/* <span className="text-sm font-medium">{isOn ? 'ON' : 'OFF'}</span> */}
-      <Moon size={18}/>
-
+   <div className="flex items-center space-x-4">
+  <div
+    onClick={toggleTheme}
+    className={`w-14 h-8 flex items-center rounded-full cursor-pointer p-1 transition-all duration-300 relative ${
+      isDarkMode ? 'bg-blue-200' : 'bg-gray-300'
+    }`}
+  >
+    {/* Icon container that slides */}
+    <div
+      className={`w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center transform transition-transform duration-300 ${
+        isDarkMode ? 'translate-x-6' : ''
+      }`}
+    >
+      {isDarkMode ? (
+        <Moon size={14} className="text-gray-700" />
+      ) : (
+        <Sun size={14} className="text-yellow-500" />
+      )}
     </div>
+  </div>
+</div>
+
   );
 }
 

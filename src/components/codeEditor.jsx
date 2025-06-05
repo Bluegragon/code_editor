@@ -43,17 +43,18 @@ const CodeEditor = ({ file, onChange }) => {
   const theme = isDarkMode ? dracula : githubLight;
 
   return (
-    <div className="h-full w-full dark:background light:background p-2">
-      <div className="text-sm text-gray-400 mb-1">
+    <div className=" w-full dark:background bg-gray-50 dark:bg-gray-800 ml-2">
+      <div className="text-sm px-2 py-1 shadow-xs text-gray-800 dark:text-gray-50 mb-1">
         Editing: <span className="font-medium">{file.name}</span>
       </div>
       <CodeMirror
         value={file.content}
-        height="calc(100vh - 100px)"
+        height="calc(100vh - 200px)"
         extensions={[extension()]}
         theme={theme}
         onChange={onChange}
       />
+      
     </div>
   );
 };

@@ -1,27 +1,35 @@
 
 import React, { useState } from "react";
-import { Home, User, Settings, Menu, File, Terminal, Folder } from "lucide-react";
+import { Home, User, Settings, Menu, File, Terminal, Folder, GitBranch } from "lucide-react";
+import { useUIState } from "../providers/EditorProvider";
 
 const Sidebar = ({content}) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { toggleTerminal, toggleFileExplorer } = useUIState();
 
   // const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
-    <div className="flex">
+    <div className="flex max-h-screen overflow-hidden">
       {/* Sidebar */}
-      <div className={`dark:bg-gray-800 bg-primarycolor   dark:text-white h-screen p-5 pt-8 duration-300 shadow-md ${isOpen ? "w-64" : "w-14"} relative`}>
-        <button
+      <div className={`dark:bg-gray-800 bg-primarycolor flex flex-col justify-between   dark:text-white p-2  duration-300  ${isOpen ? "w-64" : "w-14"} relative`}>
+        {/* <button
           // onClick={toggleSidebar}
           className="absolute top-4 right-5 dark:text-white focus:outline-none"
         >
           <Menu />
-        </button>
+        </button> */}
+        <div className="flex flex-col  mt-1 items-center ">
+         <SidebarItem icon={<Home size={20} />} label="Home" isOpen={isOpen} />
+        </div>
 
-        <div className="flex flex-col gap-6 mt-12">
-          <SidebarItem icon={<Folder size={20} />} label="Home" isOpen={isOpen} />
-          <SidebarItem icon={<Terminal size={20} />} label="Profile" isOpen={isOpen} />
-          <SidebarItem icon={<Settings size={20} />} label="Settings" isOpen={isOpen} />
+        <div className="flex flex-col gap-6 items-center ">
+          <SidebarItem icon={<Folder size={20} />} label="Home" isOpen={isOpen} onClicked={toggleFileExplorer} />
+          <SidebarItem icon={<Terminal size={20} />} label="Profile" isOpen={isOpen} onClicked={toggleTerminal} />
+          <SidebarItem icon={<GitBranch size={20} />} label="Settings" isOpen={isOpen} />
+        </div>
+         <div className="flex flex-col items-center ">
+         <SidebarItem icon={<Settings size={20} />} label="Home" isOpen={isOpen} />
         </div>
       </div>
 
@@ -31,8 +39,8 @@ const Sidebar = ({content}) => {
   );
 };
 
-const SidebarItem = ({ icon, label, isOpen }) => (
-  <div className="flex items-center gap-y-4 hover:bg-gray-700 rounded cursor-pointer">
+const SidebarItem = ({ icon, label, isOpen,onClicked }) => (
+  <div className="flex items-center gap-y-4 h-8 w-8 justify-center p-1 rounded-sm hover:shadow-xs shadow-gray-500 cursor-pointer" onClick={onClicked}>
     {icon}
     {isOpen && <span className="text-sm">{label}</span>}
   </div>
