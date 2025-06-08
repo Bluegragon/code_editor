@@ -6,6 +6,7 @@ import Terminal from "./Terminal";
 // import Docs from "./Docs"; // Placeholder for documentation/help view
 import { File, X } from "lucide-react";
 import { linearbackground } from "../customStyles";
+import '../App.css';
 
 const initialFiles = [
   {
@@ -81,7 +82,7 @@ export default function CodeEditorWithScreen() {
 
       {/* File Tabs (only show in Editor view) */}
       {activeView === "Editor" && (
-        <div className="flex px-2  border-gray-700 overflow-x-auto">
+        <div className="flex px-2  border-gray-700 py-0.5 overflow-x-auto thin-scrollbar overflow-y-hidden">
           {files.map((file, index) => (
             <div key={index} className="flex items-center">
               <button
@@ -109,15 +110,15 @@ export default function CodeEditorWithScreen() {
       )}
 
       {/* Main Area */}
-      <div className="overflow-hidden flex flex-row justify-center relative">
+      <div className="overflow-hidden flex flex-row justify-center relative h-full">
         {activeView === "Editor" && files.length > 0 && files[activeTab] ? (
-          <>
+          <div className="flex flex-col w-full h-full">
           <CodeEditor
             file={files[activeTab]}
             onChange={updateFileContent}
           />
            <Terminal />
-          </>
+          </div>
         ) : activeView === "Test" ? (
           <Terminal />
         ) : activeView === "AI Agent" ? (
