@@ -1,4 +1,4 @@
-import { CodeEditorWithScreen, FileExplorer, Navbar, Sidebar } from "../components";
+import { CodeEditorWithScreen, FileExplorer, Navbar, RighPanel, Sidebar } from "../components";
 
 export function HomeView() {
 
@@ -30,6 +30,7 @@ const content=<>
 <FileExplorer structure={fileStructure} />
 
 <CodeEditorWithScreen/>
+<RighPanel/>
 
 </div>
 </div>

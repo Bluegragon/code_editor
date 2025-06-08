@@ -7,6 +7,7 @@ const UIStateContext = createContext();
 export const UIStateProvider = ({ children }) => {
   const [terminalOpen, setTerminalOpen] = useState(false);
   const [fileExplorerOpen, setFileExplorerOpen] = useState(true);
+  const [activeLayout, setActiveLayout] = useState(false);
 
   const toggleTerminal = () => {setTerminalOpen(prev => !prev)
     console.log("heelo")
@@ -14,7 +15,7 @@ export const UIStateProvider = ({ children }) => {
 
   };
   const toggleFileExplorer = () => setFileExplorerOpen(prev => !prev);
-
+  const toggleActiveLayout = () => setActiveLayout(prev => !prev);
   return (
     <UIStateContext.Provider value={{
       terminalOpen,
@@ -23,6 +24,8 @@ export const UIStateProvider = ({ children }) => {
       setFileExplorerOpen,
       toggleTerminal,
       toggleFileExplorer,
+      activeLayout,
+     toggleActiveLayout
     }}>
       {children}
     </UIStateContext.Provider>

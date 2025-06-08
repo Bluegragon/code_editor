@@ -1,6 +1,9 @@
-/** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: 'class', // Enable class-based dark mode (Replit-style toggle)
+// tailwind.config.js
+import { defineConfig } from 'tailwindcss';
+import scrollbar from 'tailwind-scrollbar';
+
+export default defineConfig({
+  darkMode: 'class',
   content: [
     './index.html',
     './src/**/*.{js,ts,jsx,tsx}',
@@ -8,12 +11,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Light theme colors
-        primarycolor: '#28A99E' ,secondarycolor: '#28A99E',accentcolor:'#036C5F' ,alert: '#DF3F40',
-       
-      
+        primarycolor: '#28A99E',
+        secondarycolor: '#28A99E',
+        accentcolor: '#036C5F',
+        alert: '#DF3F40',
       },
     },
   },
-  plugins: [],
-};
+  plugins: [
+    scrollbar({ nocompatible: true }),
+  ],
+});

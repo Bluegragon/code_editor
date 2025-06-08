@@ -53,7 +53,7 @@ function DarkModeToggle() {
   <div
     onClick={toggleTheme}
     className={`w-14 h-8 flex items-center rounded-full cursor-pointer p-1 transition-all duration-300 relative ${
-      isDarkMode ? 'bg-blue-200' : 'bg-gray-300'
+      isDarkMode ? 'bg-green-500' : 'bg-gray-300'
     }`}
   >
     {/* Icon container that slides */}
@@ -63,9 +63,10 @@ function DarkModeToggle() {
       }`}
     >
       {isDarkMode ? (
-        <Moon size={14} className="text-gray-700" />
+         <Sun size={14} className="text-yellow-500" />
       ) : (
-        <Sun size={14} className="text-yellow-500" />
+       
+        <Moon size={14} className="text-gray-700" />
       )}
     </div>
   </div>

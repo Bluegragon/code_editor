@@ -1,11 +1,11 @@
 
 import React, { useState } from "react";
-import { Home, User, Settings, Menu, File, Terminal, Folder, GitBranch } from "lucide-react";
+import { Home, User, Settings, Menu, File, Terminal, Folder, GitBranch, Layout } from "lucide-react";
 import { useUIState } from "../providers/EditorProvider";
 
 const Sidebar = ({content}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { toggleTerminal, toggleFileExplorer } = useUIState();
+  const { toggleTerminal, toggleFileExplorer,toggleActiveLayout } = useUIState();
 
   // const toggleSidebar = () => setIsOpen(!isOpen);
 
@@ -27,6 +27,7 @@ const Sidebar = ({content}) => {
           <SidebarItem icon={<Folder size={20} />} label="Home" isOpen={isOpen} onClicked={toggleFileExplorer} />
           <SidebarItem icon={<Terminal size={20} />} label="Profile" isOpen={isOpen} onClicked={toggleTerminal} />
           <SidebarItem icon={<GitBranch size={20} />} label="Settings" isOpen={isOpen} />
+          <SidebarItem icon={<Layout size={20} />} label="Layout" isOpen={isOpen} onClicked={toggleActiveLayout} />
         </div>
          <div className="flex flex-col items-center ">
          <SidebarItem icon={<Settings size={20} />} label="Home" isOpen={isOpen} />

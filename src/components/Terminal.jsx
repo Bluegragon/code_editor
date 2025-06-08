@@ -135,9 +135,9 @@ const Terminal = () => {
   return (
     <div
       className={`${
-        terminalOpen ? "absolute" : "hidden"
-      } fixed bottom-0  ${!fileExplorerOpen ? "w-[96.5%] left-14" :"w-5/6 left-64" } bg-gray-950 border-gray-200 dark:border-gray-600 border-t border-l  text-green-400 font-mono shadow-xl   flex flex-col`}
-      style={{ height }}
+        terminalOpen ? "fixed" : "hidden"
+      } fixed bottom-0 ${fileExplorerOpen ? 'ml-2':null}  bg-gray-950 z-20 border-gray-200 dark:border-gray-600 border-t border-l  text-green-400 font-mono shadow-xl   flex flex-col`}
+      style={{ height, width: fileExplorerOpen ? "calc(100vw - 16rem)" : "calc(100vw - 3.5rem)", }}
     >
       {/* Drag Bar */}
       <div
@@ -152,13 +152,14 @@ const Terminal = () => {
             <button
               key={t.id}
               onClick={() => setActiveTerminalId(t.id)}
-              className={`px-2 py-0.5 rounded ${
+              className={`px-2 py-0.5 flex flex-row items-center justify-center gap-1 rounded ${
                 t.id === activeTerminalId
                   ? "dark:bg-[#3d3d3d] bg-gray-200 text-gray-800 dark:text-white"
                   : "hover:bg-[#444]"
               }`}
             >
               Terminal {t.id}
+              <X size={10}/>
             </button>
           ))}
         </div>
