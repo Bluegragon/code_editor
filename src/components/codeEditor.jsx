@@ -49,6 +49,7 @@ const CodeEditor = ({ file, onChange }) => {
       </div>
       <CodeMirror
         value={file.content}
+        minHeight="900px"
         
         extensions={[extension()]}
         theme={theme}

@@ -52,14 +52,14 @@ function DarkModeToggle() {
    <div className="flex items-center space-x-4">
   <div
     onClick={toggleTheme}
-    className={`w-14 h-8 flex items-center rounded-full cursor-pointer p-1 transition-all duration-300 relative ${
-      isDarkMode ? 'bg-green-500' : 'bg-gray-300'
+    className={`w-12 h-7 flex items-center rounded-full cursor-pointer p-1 transition-all duration-300 relative ${
+      isDarkMode ? 'bg-gray-900' : 'bg-gray-300'
     }`}
   >
     {/* Icon container that slides */}
     <div
-      className={`w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center transform transition-transform duration-300 ${
-        isDarkMode ? 'translate-x-6' : ''
+      className={`w-5 h-5 rounded-full bg-white shadow-md flex items-center justify-center transform transition-transform duration-300 ${
+        isDarkMode ? 'translate-x-5' : ''
       }`}
     >
       {isDarkMode ? (
